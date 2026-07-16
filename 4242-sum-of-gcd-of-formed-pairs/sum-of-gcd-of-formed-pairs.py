@@ -1,10 +1,10 @@
 class Solution:
     def gcdSum(self, nums: list[int]) -> int:
-        mx = 0
+        maxx = 0
 
         for i in range(len(nums)):
-            mx = max(mx, nums[i])
-            nums[i] = gcd(mx, nums[i])
+            maxx = max(maxx, nums[i])
+            nums[i] = gcd(maxx, nums[i])
 
         nums.sort()
 
