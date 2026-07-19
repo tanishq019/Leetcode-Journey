@@ -1,5 +1,3 @@
-import math
-
 class Solution:
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
         low, high = 1, max(piles)
@@ -7,7 +5,7 @@ class Solution:
         while low < high:
             mid = (low + high) // 2
 
-            total_hours = sum(math.ceil(p / mid) for p in piles)
+            total_hours = sum((p + mid - 1) // mid for p in piles)
             
             if total_hours <= h:
                 high = mid
