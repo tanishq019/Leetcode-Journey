@@ -1,14 +1,11 @@
 class Solution:
     def maxProduct(self, n: int) -> int:
-        max1 = max2 = 0
+        arr=[]
 
-        while n:
-            d = n % 10
-            if d >= max1:
-                max2 = max1
-                max1 = d
-            elif d > max2:
-                max2 = d
-            n //= 10
+        while n>0:
+            arr.append(n%10)
+            n//=10
 
-        return max1 * max2
+        arr.sort(reverse=True)
+
+        return arr[0]*arr[1]
