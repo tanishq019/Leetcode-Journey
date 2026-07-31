@@ -1,17 +1,18 @@
+from collections import Counter
+
+
 class Solution:
-    def minimumPushes(self, word: str) -> int:
-        freq = [0] * 26
-        for char in word:
-            freq[ord(char) - ord("a")] += 1
 
-        freq.sort(reverse = True)
+  def minimumPushes(self, word: str) -> int:
 
-        total_pushes = 0
-        for i in range(26):
-            if freq[i] == 0:
-                break
+    counts = Counter(word)
 
-            presses = (i // 8) + 1
-            total_pushes += freq[i] * presses
+    sorted_freqs = sorted(counts.values(), reverse=True)
 
-        return total_pushes
+    total_pushes = 0
+
+    for i, freq in enumerate(sorted_freqs):
+      presses = (i // 8) + 1  
+      total_pushes += freq * presses
+
+    return total_pushes
