@@ -1,6 +1,19 @@
 class Solution:
-    def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
-        def far(a):
-            return all(abs(a - b) > d for b in arr2)
+    def findTheDistanceValue(self, arr1, arr2, d):
 
-        return sum(map(far, arr1))
+        res = 0
+
+        for a in arr1:
+
+            found = False
+
+            for b in arr2:
+
+                if abs(a - b) <= d:
+                    found = True
+                    break
+
+            if not found:
+                res += 1
+
+        return res
